@@ -21,6 +21,10 @@ Method:
   
 Time Complexity: O(n)
 Space Complexity: O(1) because it's a constant function as it does not depend on size of either string
+
+MISTAKE*
+Didn't compare string lengths. If length of | first string - length of second string | > 1, they are not one edit away or zero edit away. 
+Makes the execution time faster for these type of cases
 '''
 
 def one_away(str1, str2):
@@ -28,6 +32,10 @@ def one_away(str1, str2):
     char_tracker = []
     loc = 0
     no_of_ones = 0
+
+    #UPDATE ON THE MISTAKE
+    if(abs(len(str1) - len(str2)) > 1):
+        return False
 
     for i in range(26):
         char_tracker.append(0)
@@ -59,7 +67,7 @@ print(one_away('pale', 'ple'))
 print(one_away('pales', 'pale'))
 print(one_away('pale', 'bale'))
 print(one_away('pale', 'bake'))
-
+print(one_away('pale', 'pagles'))
 
 
 
